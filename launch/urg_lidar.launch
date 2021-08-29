@@ -10,12 +10,15 @@
     <param name="ip_address" value=""/>
     <param name="serial_port" value="/dev/ttyACM0"/>
     <param name="serial_baud" value="115200"/>
-    <param name="frame_id" value="laser"/>
+    <param name="frame_id" value="base_lidar_link"/>
     <param name="calibrate_time" value="true"/>
     <param name="publish_intensity" value="false"/>
     <param name="publish_multiecho" value="false"/>
     <param name="angle_min" value="-1.5707963"/>
     <param name="angle_max" value="1.5707963"/>
   </node>
+
+  <!-- tf from base link to base imu link -->
+  <node machine="jetson-nano" name="base_lidar_link" pkg="tf" type="static_transform_publisher" args="-0.05 0 0.05 0 0 0 /base_link /base_lidar_link 100"/>
 
 </launch>
